@@ -1,0 +1,20 @@
+pipline
+{
+    agent any
+    stages
+    {
+        stage('Execute script parallely')
+        {
+            parallel
+            {
+                stage('run python script')
+                {steps {sh 'echo  python_script_is_running  '}}
+
+                stage('run shell script')
+                {steps{sh 'echo shell_script_is_running'}}
+            }
+        }
+        stage('publish logs to shared location')
+        { steps{ sh 'echo upload_logs_to_shared_location  '}}
+    }
+}
